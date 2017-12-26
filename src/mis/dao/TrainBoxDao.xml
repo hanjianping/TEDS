@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mis.dao.TrainBoxDao" >
+		<resultMap id="TrainList"  type="mis.entity.TrainBox">
+			<id column="ID" property="id" />
+			<result column="TrainCounter" property="trainCounter" />
+			<result column="IDName" property="iDName" />
+			<result column="Datenow" property="dateNow" />
+			<result column="TrainboxIndex" property="trainboxIndex" />
+			<result column="Trainboxno" property="trainId" />
+			<result column="Axleno" property="axleNo"/>
+			<result column="WheelBase" property="wheelBase" />
+			<result column="CameraType" property="cameraType"/>
+			<result column="Channelno" property="channelNo" />
+			<result column="PicNum" property="pickNum" />
+			<result column="PhotoPath" property="photoPath"/>
+			<result column="Brakeno" property="brakeNo"/>
+			<result column="BrakeThickness" property="brakeThickness"/>
+			<result column="CheXiangNo" property="cheXiangNo"/>
+		</resultMap>
+
+		
+         <select id="findTrainList"   resultMap="TrainList">
+			select * from cl where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and Trainboxno = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and Datenow  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and Datenow  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(Datenow)= to_days(now())
+			</if>
+			 order by Datenow desc limit #{pageNum},#{pageSize}
+         </select>
+         
+         <select id="getTrainListCount" resultType="int">
+         	select count(*) from cl  where 1=1
+			 <if test="trainId != null and trainId !='' ">
+				 and Trainboxno = #{trainId}
+			 </if>
+			 <if test="firstDate != null and firstDate !='' ">
+				 and Datenow  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			 </if>
+			 <if test="lastDate != null and lastDate !='' ">
+				 and Datenow  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			 </if>
+			 <if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+				 and to_days(Datenow)= to_days(now())
+			 </if>
+         </select>
+			<select id="showselectTrainNO" resultMap="TrainList">
+				select  * from cl  GROUP BY Trainboxno;
+			</select>
+ </mapper>
+

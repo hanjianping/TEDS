@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3dtd">  
+      
+<struts>  
+    <constant name="struts.i18n.encoding" value="UTF-8" />  
+    <constant name="struts.action.extension" value="action" />  
+
+	<package name="MIS" namespace="/" extends="struts-default">  
+	    <interceptors>
+	        <interceptor name="loginInter" class="mis.interceptor.LoginInterceptor"></interceptor>
+	    </interceptors>
+		<action name="Current_*" class="mis.action.CurrentAction" method="{1}">
+			<result name="all">WEB-INF/page/currentData/cd_all.jsp</result>
+        	<result name="lean">WEB-INF/page/currentData/cd_lean.jsp</result>
+        	<result name="board">WEB-INF/page/currentData/cd_board.jsp</result>
+        	<result name="line">WEB-INF/page/currentData/cd_line.jsp</result>
+        	<result name="press">WEB-INF/page/currentData/cd_press.jsp</result>
+        </action>
+        
+        <action name="History_*" class="mis.action.HistoryAction" method="{1}">
+			<result name="all">WEB-INF/page/historyData/hd_all.jsp</result>
+        	<result name="lean">WEB-INF/page/historyData/hd_lean.jsp</result>
+        	<result name="board">WEB-INF/page/historyData/hd_board.jsp</result>
+        	<result name="line">WEB-INF/page/historyData/hd_line.jsp</result>
+			<result name="press">WEB-INF/page/historyData/hd_press.jsp</result>
+        </action>
+        
+        <action name="Analyse_*" class="mis.action.AnalyseAction" method="{1}">
+        	<result name="abrasion">WEB-INF/page/analyseData/ad_abrasion.jsp</result>
+        	<result name="lean">WEB-INF/page/analyseData/ad_lean.jsp</result>
+        	<result name="offset">WEB-INF/page/analyseData/ad_offset.jsp</result>
+        	<result name="press">WEB-INF/page/analyseData/ad_press.jsp</result>
+        </action>
+        
+        <action name="Video_*" class="mis.action.VideoAction" method="{1}">
+         	<result name="current">WEB-INF/page/videoData/vd_current.jsp </result>
+        	<result name="history">WEB-INF/page/videoData/vd_history.jsp </result>
+        </action>
+         <action name="Status_*" class="mis.action.StatusAction" method="{1}">
+         	<result name="currentStatus">WEB-INF/page/systemStatus/status_current.jsp </result>
+        	<result name="historyStatus">WEB-INF/page/systemStatus/status_history.jsp </result>
+        	<result name="countStatus">WEB-INF/page/systemStatus/status_count.jsp </result>
+        </action>
+        
+        <action name="Setting_*" class="mis.action.SettingAction" method="{1}">  
+        	<result name="updatePwd">WEB-INF/page/systemSetting/setting_updatepwd.jsp</result>
+        	<result name="threshold">WEB-INF/page/systemSetting/setting_threshold.jsp</result>
+        	 <result name="modifyThreshold" type="redirectAction">Setting_threshold.action</result>
+        </action>
+         <action name="User_*" class="mis.action.UserAction" method="{1}">  
+        	<result name="login" type="redirectAction">Current_all.action</result>
+        	<result name="list">WEB-INF/page/user/user_list.jsp</result>
+        	<result name="add">WEB-INF/page/user/user_add.jsp</result>
+        	<result name="modifyUser" type="redirectAction">User_list.action</result>
+        	<result name="logout">login.jsp</result>
+        </action>
+    </package>  
+    
+    
+    <package name="default"  extends="json-default" namespace="/register">
+		<action name="userReverify" class="mis.action.UserAction" method="reVerify">
+			<result name="verify" type="json"></result>
+			<result name="reerror" type="json"></result>
+		</action>
+		<action name="verifyImgCode" class="mis.action.UserAction" method="verifyImgCode">
+			<result name="verifyimgCode" type="json"></result>
+			<result name="reerror1" type="json"></result>
+		</action>
+		<action name="verifyPWD" class="mis.action.UserAction" method="modifyPWD">
+			<result name="modifyPWD" type="json"></result>
+		</action>
+		<action name="existUser" class="mis.action.UserAction" method="existUser">
+			<result name="existUser" type="json"></result>
+			<result name="verifyUser" type="json"></result>
+		</action>
+			<action name="addUser" class="mis.action.UserAction" method="addUser">
+			<result name="addUser" type="json"></result>
+			<result name="addUser1" type="json"></result>
+		</action>
+		<action name="modifyThreshold" class="mis.action.SettingAction" method="modifyThreshold">
+			<result name="modifyThreshold" type="json"></result>
+		</action>
+	</package>
+  
+    
+</struts>   

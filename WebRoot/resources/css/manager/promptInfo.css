@@ -1,0 +1,35 @@
+#confirmDiv {
+	position:fixed;_position:absolute;
+	display: none;
+	z-index: 999;
+}
+.savebg{
+	width:233px;
+	height:29px;
+	background:url(../../images/savebg.jpg) no-repeat;
+	padding-left:8px;
+	color:#000;
+	font-size:12px;
+	line-height:27px;
+}
+.saveimgok{
+	width:239px;
+	height:61px;
+	background:url(../../images/saveimg.jpg) no-repeat;
+	border:1px #bfbfbf solid;
+	border-top:0;
+}
+.saveimgwrong{
+	width:239px;
+	height:61px;
+	background:url(../../images/saveimgwrong.jpg) no-repeat;
+	border:1px #bfbfbf solid;
+	border-top:0;
+}
+.saveimgfail{
+	width:239px;
+	height:61px;
+	background:url(../../images/saveimgfail.jpg) no-repeat;
+	border:1px #bfbfbf solid;
+	border-top:0;
+}

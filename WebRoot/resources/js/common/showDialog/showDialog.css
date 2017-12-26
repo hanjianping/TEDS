@@ -1,0 +1,65 @@
+﻿.mesWindowTop table td{
+	height:auto
+}
+/*前台弹出层 样式*/
+.tanTopM{
+	background:url(img/tanTopM.png) repeat-x;
+	line-height:44px;
+	padding-top:10px;
+	color:#ffffff;
+	font-family:"微软雅黑";
+	font-size:14px;
+	font-weight: bold;
+}
+.tanCenterL{
+	background:url(img/tanCenterL.png) repeat-y
+}
+.tanCenterM{
+	background:#f5f5f5;
+	padding:15px 0 15px 17px;
+}
+.tanCenterR{
+	background:url(img/tanCenterR.png) repeat-y right;
+}
+.tanBotM{
+	background:url(img/tanBotM.png) repeat-x;
+}
+.tanTopR,.htanTopR{
+	background:url(img/tanTopR.png) no-repeat;
+	display:block;
+	width:44px;
+	height:54px;
+}
+.tanTopR:hover{
+	background:url(img/tanTopRHover.png) no-repeat;
+}
+.htanTopR{
+	background:url(img/htanTopR.png) no-repeat;
+}
+.htanTopR:hover{
+	background:url(img/htanTopRHover.png) no-repeat;
+}
+
+/*后台弹出层 样式*/
+.htanTopM{
+	background:url(img/htanTopM.png) repeat-x;
+	line-height:44px;
+	padding-top:10px;
+	color:#ffffff;
+	font-family:"微软雅黑";
+	font-size:14px;
+	font-weight: bold;
+}
+.htanCenterL{
+	background:url(img/htanCenterL.png) repeat-y
+}
+.htanCenterM{
+	background:#fbfbfb;
+	padding:15px 0 15px 17px;
+}
+.htanCenterR{
+	background:url(img/htanCenterR.png) repeat-y right;
+}
+.htanBotM{
+	background:url(img/htanBotM.png) repeat-x;
+}

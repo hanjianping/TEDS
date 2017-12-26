@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mis.dao.TrainDao" >
+		<resultMap id="TrainList"  type="mis.entity.Train">
+			<id column="ID" property="id" />
+			<result column="TrainID" property="trainId" />
+			<result column="PlaneNO" property="planeNo" />
+			<result column="DetTime" property="detTime" />
+			<result column="CenterBiase" property="centerBiase" />
+			<result column="LRAngle" property="lRAangle"/>
+			<result column="FBAngle" property="fBAangle" />
+			<result column="Press" property="press"/>
+			<result column="FirstLeft" property="firstLeft" />
+			<result column="SecondLeft" property="secondLeft"/>
+			<result column="ThirdLeft" property="thirdLeft" />
+			<result column="FourthLeft" property="fourhtLeft" />
+			<result column="GraphicPath" property="graphicPath" />
+			<result column="PhotoPath" property="photoPath" />
+			<result column="JlHeight" property="jHeight" />
+			<result column="FirstLeft_Bak" property="firstLeft_Bak" />
+			<result column="SecondLeft_Bak" property="secondLeft_Bak" />
+			<result column="ThirdLeft_Bak" property="thirdLeft_Bak" />
+			<result column="FourthLeft_Bak" property="fourthLeft_Bak" />
+		</resultMap>
+		<resultMap type="mis.entity.Device" id="DeviceList">
+			<id column="ID" property="id" />
+			<result column="DevID" property="devId" />
+			<result column="DevTime" property="devTime" />
+			<result column="DevTemp" property="devTemp" />
+			<result column="DevTemp2" property="devTemp2"/>
+			<result column="CpuTemp" property="cpuTemp" />
+			<result column="DevDoor" property="devDoor"/>
+			<result column="DevReduce" property="devReduce" />
+			<result column="DevHeat" property="devHeat"/>
+		</resultMap>
+		
+			<resultMap type="mis.entity.Chart_device" id="Devicechart">
+			<result column="DevTime" property="detTime" />
+			<result column="DevTemp" property="devTemp" />
+			<result column="DevTemp2" property="devTemp2"/>
+			<result column="CpuTemp" property="tempcpu" />
+		</resultMap>
+		
+		<select id="exportExcel"  resultMap="TrainList">
+		 select * from det_table
+		</select>
+		<select id="printData"   resultMap="TrainList">
+			select * from det_table where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test="board != null and board !='' and board == '1'.toString()">
+				and FirstLeft  &lt;${@mis.util.Configuration@getFirstLeftThreshold()} and SecondLeft  &lt;${@mis.util.Configuration@getFirstLeftThreshold()}
+			</if>
+			<if test="board != null and board !='' and board == '0'.toString()">
+				and (FirstLeft  &gt;=${@mis.util.Configuration@getFirstLeftThreshold()} or SecondLeft  &gt;=${@mis.util.Configuration@getFirstLeftThreshold()})
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DetTime)= to_days(now())
+			</if>
+			<if test=" lean !=null and lean !='' and lean =='1'.toString()">
+		    and LRAngle &lt;${@mis.util.Configuration@getLRAangleThreshold()}  and FBAngle &lt;${@mis.util.Configuration@getFBAangleThreshold()} 
+			</if>
+			<if test=" lean !=null and lean !='' and lean =='0'.toString()">
+		    and (LRAngle &gt;=${@mis.util.Configuration@getLRAangleThreshold()}  or FBAngle &gt;=${@mis.util.Configuration@getFBAangleThreshold()})
+			</if>
+			<if test=" line !=null and line !='' and line =='1'.toString()">
+		         and CenterBiase &lt;${@mis.util.Configuration@getCenterBiaseThreshold()} 
+			</if>
+			<if test=" line !=null and line !='' and line =='0'.toString()">
+		        and CenterBiase &gt;=${@mis.util.Configuration@getCenterBiaseThreshold()} 
+			</if>
+			<if test=" press !=null and press !='' and press =='1'.toString()">
+		      and Press &lt;${@mis.util.Configuration@getPressThreshold()}  
+			</if>
+			<if test=" press !=null and press !='' and press =='0'.toString()">
+		      and Press &gt;=${@mis.util.Configuration@getPressThreshold()} 
+			</if>
+			<if test=" duanNo !=null and duanNo !='' ">
+		      and  TrainID like CONCAT('%',#{duanNo},'%')
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			<if test="trainState !=null and trainState !='' and trainState == '1'.toString()">
+		  	 	and FirstLeft &lt;${@mis.util.Configuration@getFirstLeftThreshold()} 
+		    	and Press &lt;${@mis.util.Configuration@getPressThreshold()}  
+		    	and SecondLeft &lt;${@mis.util.Configuration@getFirstLeftThreshold()} 
+		    	and CenterBiase &lt;${@mis.util.Configuration@getCenterBiaseThreshold()}
+		    	and LRAngle &lt;${@mis.util.Configuration@getLRAangleThreshold()}
+		    	and FBAngle &lt;${@mis.util.Configuration@getFirstLeftThreshold()}
+			</if>
+			<if test="trainState !=null and trainState !='' and trainState == '0'.toString()">
+		    and(
+		  		FirstLeft &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}   
+		     	or Press &gt;=${@mis.util.Configuration@getPressThreshold()} 
+		     	or SecondLeft &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}  
+		     	or CenterBiase &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}  
+		     	or LRAngle &gt;=${@mis.util.Configuration@getLRAangleThreshold()} 
+		     	or FBAngle &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}
+		     	)
+			</if>
+			
+         </select>
+		
+		
+         <select id="findTrainList"   resultMap="TrainList">
+			select * from det_table where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test="board != null and board !='' and board == '1'.toString()">
+				and FirstLeft  &lt;${@mis.util.Configuration@getFirstLeftThreshold()} and SecondLeft  &lt;${@mis.util.Configuration@getFirstLeftThreshold()}
+			</if>
+			<if test="board != null and board !='' and board == '0'.toString()">
+				and (FirstLeft  &gt;=${@mis.util.Configuration@getFirstLeftThreshold()} or SecondLeft  &gt;=${@mis.util.Configuration@getFirstLeftThreshold()})
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DetTime)= to_days(now())
+			</if>
+			<if test=" lean !=null and lean !='' and lean =='1'.toString()">
+		    and LRAngle &lt;${@mis.util.Configuration@getLRAangleThreshold()}  and FBAngle &lt;${@mis.util.Configuration@getFBAangleThreshold()} 
+			</if>
+			<if test=" lean !=null and lean !='' and lean =='0'.toString()">
+		    and (LRAngle &gt;=${@mis.util.Configuration@getLRAangleThreshold()}  or FBAngle &gt;=${@mis.util.Configuration@getFBAangleThreshold()})
+			</if>
+			<if test=" line !=null and line !='' and line =='1'.toString()">
+		         and CenterBiase &lt;${@mis.util.Configuration@getCenterBiaseThreshold()} 
+			</if>
+			<if test=" line !=null and line !='' and line =='0'.toString()">
+		        and CenterBiase &gt;=${@mis.util.Configuration@getCenterBiaseThreshold()} 
+			</if>
+			<if test=" press !=null and press !='' and press =='1'.toString()">
+		      and Press &lt;${@mis.util.Configuration@getPressThreshold()}  
+			</if>
+			<if test=" press !=null and press !='' and press =='0'.toString()">
+		      and Press &gt;=${@mis.util.Configuration@getPressThreshold()} 
+			</if>
+			<if test=" duanNo !=null and duanNo !='' ">
+		      and  TrainID like CONCAT('%',#{duanNo},'%')
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			<if test="trainState !=null and trainState !='' and trainState == '1'.toString()">
+		  	 	and FirstLeft &lt;${@mis.util.Configuration@getFirstLeftThreshold()} 
+		    	and Press &lt;${@mis.util.Configuration@getPressThreshold()}  
+		    	and SecondLeft &lt;${@mis.util.Configuration@getFirstLeftThreshold()} 
+		    	and CenterBiase &lt;${@mis.util.Configuration@getCenterBiaseThreshold()}
+		    	and LRAngle &lt;${@mis.util.Configuration@getLRAangleThreshold()}
+		    	and FBAngle &lt;${@mis.util.Configuration@getFirstLeftThreshold()}
+			</if>
+			<if test="trainState !=null and trainState !='' and trainState == '0'.toString()">
+		  and(
+		  		FirstLeft &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}   
+		     	or Press &gt;=${@mis.util.Configuration@getPressThreshold()} 
+		     	or SecondLeft &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}  
+		     	or CenterBiase &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}  
+		     	or LRAngle &gt;=${@mis.util.Configuration@getLRAangleThreshold()} 
+		     	or FBAngle &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}
+		     	)
+			</if>
+			 order by DetTime desc limit #{pageNum},#{pageSize}
+         </select>
+         
+         <select id="getTrainListCount" resultType="int">
+         	select count(*) from det_table  where 1=1
+         	<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+		   <if test="board != null and board !='' and board == '1'.toString()">
+				and FirstLeft  &lt;${@mis.util.Configuration@getFirstLeftThreshold()} and SecondLeft  &lt;${@mis.util.Configuration@getFirstLeftThreshold()}
+			</if>
+			<if test="board != null and board !='' and board == '0'.toString()">
+				and (FirstLeft  &gt;=${@mis.util.Configuration@getFirstLeftThreshold()} or SecondLeft  &gt;=${@mis.util.Configuration@getFirstLeftThreshold()})
+			</if>
+			<if test=" lean !=null and lean !='' and lean =='1'.toString()">
+		    and LRAngle &lt;${@mis.util.Configuration@getLRAangleThreshold()}  and FBAngle &lt;${@mis.util.Configuration@getFBAangleThreshold()} 
+			</if>
+			<if test=" lean !=null and lean !='' and lean =='0'.toString()">
+		    and (LRAngle &gt;=${@mis.util.Configuration@getLRAangleThreshold()}  or FBAngle &gt;=${@mis.util.Configuration@getFBAangleThreshold()})
+			</if>
+			<if test=" line !=null and line !='' and line =='1'.toString()">
+		         and CenterBiase &lt;${@mis.util.Configuration@getCenterBiaseThreshold()} 
+			</if>
+			<if test=" line !=null and line !='' and line =='0'.toString()">
+		        and CenterBiase &gt;=${@mis.util.Configuration@getCenterBiaseThreshold()} 
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" press !=null and press !='' and press =='1'.toString()">
+		      and Press &lt;${@mis.util.Configuration@getPressThreshold()}  
+			</if>
+			<if test=" press !=null and press !='' and press =='0'.toString()">
+		      and Press &gt;=${@mis.util.Configuration@getPressThreshold()} 
+			</if>
+			<if test="trainState !=null and trainState !='' and trainState == '1'.toString()">
+		  	 	and FirstLeft &lt;${@mis.util.Configuration@getFirstLeftThreshold()} 
+		    	and Press &lt;${@mis.util.Configuration@getPressThreshold()}  
+		    	and SecondLeft &lt;${@mis.util.Configuration@getFirstLeftThreshold()} 
+		    	and CenterBiase &lt;${@mis.util.Configuration@getCenterBiaseThreshold()}
+		    	and LRAngle &lt;${@mis.util.Configuration@getLRAangleThreshold()}
+		    	and FBAngle &lt;${@mis.util.Configuration@getFirstLeftThreshold()}
+			</if>
+			<if test="trainState !=null and trainState !='' and trainState == '0'.toString()">
+		  and(
+		  		FirstLeft &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}   
+		     	or Press &gt;=${@mis.util.Configuration@getPressThreshold()} 
+		     	or SecondLeft &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}  
+		     	or CenterBiase &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}  
+		     	or LRAngle &gt;=${@mis.util.Configuration@getLRAangleThreshold()} 
+		     	or FBAngle &gt;=${@mis.util.Configuration@getFirstLeftThreshold()}
+		     	)
+			</if>
+			<if test=" duanNo !=null and duanNo !='' ">
+			  and  TrainID like CONCAT('%',#{duanNo},'%') 
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DetTime)= to_days(now())
+			</if>
+         </select>
+         
+          <select id="findDeviceList"   resultMap="DeviceList">
+			select * from dev_status where  1=1
+			<if test="devId != null and devId !='' ">
+				and DevID = #{devId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DevTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DevTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DevTime)= to_days(now())
+			</if>
+			 order by DevTime desc limit #{pageNum},#{pageSize}
+         </select>
+         
+           <select id="printDeviceDate"   resultMap="DeviceList">
+			select * from dev_status where  1=1
+			<if test="devId != null and devId !='' ">
+				and DevID = #{devId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DevTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DevTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test="isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DevTime)= to_days(now())
+			</if>
+         </select>
+         
+          <select id="getDeviceListCount" resultType="int">
+         	select count(*) from dev_status  where 1=1
+         	<if test="devId != null and devId !='' ">
+				and DevID = #{devId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DevTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DevTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DevTime)= to_days(now())
+			</if>
+         </select>
+         
+         <select id="showselectPlaneNO" resultMap="TrainList">
+			select  * from det_table  GROUP BY PlaneNO; 
+         </select>
+         <select id="showselectTrainNO" resultMap="TrainList">
+			select  * from det_table  GROUP BY TrainID; 
+         </select>
+         <select id="selectedDevice" resultMap="DeviceList">
+			select  * from dev_status  GROUP BY DevID; 
+         </select>
+         
+            <select id="showCarbonchart"  resultType="mis.entity.Carbon">
+			 select DetTime, FirstLeft,SecondLeft  from det_table where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			order by DetTime
+         </select>
+         
+           <select id="showCenterchart"  resultType="mis.entity.Chart_center">
+			 select DetTime, CenterBiase  from det_table where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			order by DetTime
+         </select>
+         
+           <select id="showLeanchart"  resultType="mis.entity.Chart_lean">
+			 select DetTime, LRAngle,FBAngle  from det_table where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			order by DetTime
+         </select>
+         
+            <select id="showPresschart"  resultType="mis.entity.Chart_press">
+			 select DetTime, Press  from det_table where  1=1
+			<if test="trainId != null and trainId !='' ">
+				and TrainID = #{trainId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DetTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DetTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" planeNo !=null and planeNo !='' ">
+		      and PlaneNO=#{planeNo} 
+			</if>
+			order by DetTime
+         </select>
+         
+            <select id="showDevicechart"  resultMap="Devicechart">
+			 select DevTime, DevTemp ,DevTemp2,CpuTemp from dev_status where  1=1
+			<if test="devId != null and devId !='' ">
+				and DevID = #{devId}
+			</if>
+			<if test="firstDate != null and firstDate !='' ">
+				and DevTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DevTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DevTime)= to_days(now())
+			</if>
+			order by DevTime
+         </select>
+         
+         <select id="showCurrentVideo" resultType="mis.entity.Video">
+         	select * from video_table where 1=1
+         	<if test="trainID != null and trainID !='' ">
+				and TrainID = #{trainID}
+			</if>
+				<if test="firstDate != null and firstDate !='' ">
+				and DevTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DevTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+			<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DevTime)= to_days(now())
+			</if>
+			 order by DevTime desc limit #{pageNum},#{pageSize}
+         </select>
+         
+         
+            <select id="getVideoCount" resultType="int">
+         	select  count(*) from video_table where 1=1
+         	<if test="trainID != null and trainID !='' ">
+				and TrainID = #{trainID}
+			</if>
+				<if test="firstDate != null and firstDate !='' ">
+				and DevTime  &gt;= STR_TO_DATE(#{firstDate},'%Y-%m-%d %T')
+			</if>
+			<if test="lastDate != null and lastDate !='' ">
+				and DevTime  &lt;= STR_TO_DATE(#{lastDate},'%Y-%m-%d %T')
+			</if>
+				<if test=" isCurrentData !=null and isCurrentData !='' and isCurrentData =='1'.toString()">
+		     and to_days(DevTime)= to_days(now())
+			</if>
+         </select>
+         
+         <select id="findThreshold" resultType="mis.entity.Threshold">
+         	select * from threshold_table where ID='1'
+         </select>
+         
+         <update id="modifyThreshold" parameterType="mis.entity.Threshold"> 
+         	 update threshold_table 
+    			set centerBiaseThreshold=#{centerBiaseThreshold},
+    				lRAangleThreshold=#{lRAangleThreshold},
+    				fBAangleThreshold=#{fBAangleThreshold},
+    				firstLeftThreshold=#{firstLeftThreshold},
+    				secondLeftThreshold=#{secondLeftThreshold},
+    				pressThreshold=#{pressThreshold},
+    				cpuTempThreshold=#{cpuTempThreshold},
+    				devTempThreshold=#{devTempThreshold},
+    				devTempBThreshold=#{devTempBThreshold}
+    			    where ID='1'
+         </update>
+ </mapper>
+

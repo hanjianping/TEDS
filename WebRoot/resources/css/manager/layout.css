@@ -1,0 +1,780 @@
+@charset "utf-8";
+
+/*文件中能用到的所有标签集合*/
+body,div,span,font,h1,h2,h3,h4,p,pre,em,b,dl,dt,dd,ul,li,form,radio,th,td,tbody,thead,radio,label,article,aside,dialog,footer,header,section,footer,nav,col
+	{
+	background: none repeat scroll 0 0 transparent;
+	border: 0 none;
+	font-size: 100%;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	/*   vertical-align: baseline;*/
+}
+body{
+	overflow-y:scroll;
+    *overflow-y:none;
+	}
+/*字体12号 行高100%*/
+body,button,input,select,textarea,li,dt,dd,div,p,span {
+	font: 12px/ 1 "宋体", Arial;
+	*font-family:"宋体" !important;
+}
+
+input,textarea {
+	color: #454545;
+}
+
+/*html5.0 引入的元素*/
+article,aside,dialog,footer,header,section,nav,figure,hgroup,caption {
+	display: block;
+}
+
+ol,ul,li {
+	list-style: none outside none;
+}
+
+img {
+	border: medium none;
+}
+
+em,strong,b {
+	font-style: normal;
+}
+
+button,input,select,textarea {
+	font-size: 100%;
+	margin: 0;
+	outline: 0 none;
+	padding: 0;
+	vertical-align: middle;
+}
+
+input::-moz-focus-inner {
+	border-color: transparent !important;
+}
+
+button,.btn,.botBtn,.ondown_btn {
+	border: 0;
+	cursor: pointer;
+}
+
+a,button {
+	cursor: pointer;
+}
+
+a {
+	color: #1357ac;
+	cursor: pointer;
+	outline: 0; /*ff*/
+	hide-focus: expression(this.hideFocus =     true); /*ie*/
+	text-decoration: none
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+table{ /*  border-collapse: collapse;*/
+	border-spacing: 0;
+}
+
+/*清除浮动*/
+.clear:after {
+	content: ".";
+	display: block;
+	visibility: hidden;
+	height: 0;
+	clear: both;
+}
+.imgInfo{
+	text-align:center;
+	}
+
+* html .clear {
+	height: 1%;
+}
+
+.clear {
+	display: inline-block;
+}
+
+/*文本居左 居右*/
+.txtLeft {
+	text-align: left;
+}
+
+.txtRight {
+	text-align: right;
+}
+
+.txtCenter {
+	text-align: center;
+}
+
+/*左浮动 右浮动*/
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/*页面内容区*/
+.main {
+	margin: 0 auto;
+}
+
+.mWrap {
+	background: url("../../images/manager/Nav.jpg") repeat-y scroll 0 0
+		transparent;
+	width: 976px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+/*左侧，右侧内容区*/
+.mainLeft {
+	float: left;
+	width: 180px;
+	height: 624px
+}
+
+.mainRight {
+	width: 770px;
+	float: right;
+	margin-bottom:20px;
+}
+
+/*内容区标题*/
+h2 {
+	color: #464646;
+	font-size: 16px;
+}
+
+h2.subhead {
+	color: #464646;
+	font-size: 14px;
+}
+
+.popupWrap414 h2 {
+	color: #811f20;
+	font-size: 16px;
+}
+
+.populesser {
+	color: #454545;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.t20px {
+	margin-top: 20px;
+}
+
+div.tNone,.inputItem strong.tNone,span.tNone,p.tNone {
+	margin: 0px;
+}
+
+.w154px {
+	width: 151px;
+	padding-left: 3px;
+}
+
+/*审核级别*/
+.w90px {
+	width: 87px;
+	padding-left: 3px;
+}
+
+/*提示信息样式*/
+.prompt_red {
+	color: #e70000;
+	display: inline;
+	float: left;
+	font-size: 12px;
+	padding-top: 5px;
+}
+
+/*内容区功能按钮*2012-1-31因要求按钮调整成链接形式*/
+.btn{
+	color:#ffffff;
+	background:url(../../images/manager/zzSearch.jpg) no-repeat;
+	width:70px;
+	height:22px;
+	line-height:22px;
+	display: inline-block;
+	text-align: center;
+}
+a.btn:hover{
+	color:#04abfc;
+}
+.btnNew{
+	color:#ffffff;
+	background:url(../../images/manager/zzSearchNew.jpg) no-repeat;
+	width:70px;
+	height:22px;
+	line-height:22px;
+	display: inline-block;
+	text-align: center;
+}
+a.btnNew:hover{
+	color:#04abfc;
+}
+.botBtn{
+	color:#ffffff;
+	background:url(../../images/manager/BotBtn.jpg) no-repeat;
+	width:80px;
+	height:28px;
+	line-height:28px;
+	text-align: center;
+	display: inline-block;
+}
+a.botBtn:hover{
+	color:#04abfc;
+}
+
+/*字体颜色，边框颜色*/
+.fontRed {
+	color: #e70000;
+}
+
+.fontBlue {
+	color: #018cd1;
+}
+
+.fontGray {
+	color: #d6d6d6;
+}
+
+.borderRed {
+	border: 1px solid #e50000;
+}
+
+.borderBlue {
+	border: 1px solid #018cd1;
+}
+
+.borderGray {
+	border: 1px solid #d6d6d6;
+}
+
+/* 红色*号样式 */
+em {
+	font-size: 14px;
+	color: #ff0000;
+}
+
+/*内容区表格*/
+.tableData {
+	border: 1px solid #d6d6d6;
+	table-layout: fixed;
+	text-align: center;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+/*表头*/
+.tableData thead th {
+	color: #454545;
+	height: 30px;
+	line-height: 30px;
+	background: #ffffff;
+	padding: 1px 0;
+	border-bottom: 1px solid #d6d6d6;
+}
+
+.tableData thead th.first {
+	padding: 1px 0 1px 1px;
+}
+
+.tableData thead th.last {
+	padding: 1px 1px 1px 0px;
+}
+
+.tableData thead th h4 {
+	background: #c9cacc;
+}
+
+/*内容*/
+.tableData td {
+	height: 30px;
+	border-bottom: 1px solid #d6d6d6;
+	word-break: break-all;
+	word-wrap: break-word;
+	vertical-align: middle;
+	line-height: 18px;
+
+}
+
+/*tr行背景色*/
+tr.bgBlue {
+	background: #edf9fe;
+}
+
+tr.bgYellow {
+	background: #FBFAE0;
+}
+
+/*内容区表单*/
+input,textarea,select {
+	border: 1px solid #d6d6d6;
+}
+
+input,textarea,select {
+	height: 20px;
+	line-height: 20px;
+}
+
+/*左侧logo和菜单*/
+.logoArea {
+	padding: 40px 14px 45px;
+	height: 40px;
+}
+
+.logoArea .logo {
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-right: 4px;
+	background:none
+}
+
+.companyName {
+	font-family: "微软雅黑";
+	font-size: 16px;
+	color: #ffffff;
+	font-weight: 700;
+	line-height: 18px;
+	padding-top: 4px
+}
+
+.companyName b {
+	font-family: "Arial";
+	font-weight: normal;
+	font-size: 14px
+}
+
+.nav {
+	padding: 0 14px;
+	width: 150px;
+	float:left
+}
+
+.mainLeft .nav span {
+	background: url(../../images/manager/NavBg.jpg) no-repeat;
+	width: 150px;
+	height: 28px;
+	line-height: 28px;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+	margin: 0px 0 3px;
+	float:left;
+}
+
+.mainLeft .nav span a {
+	color: #ffffff;
+}
+.mainLeft ul{
+	float:left;
+	width:150px
+}
+.mainLeft ul.show {
+	background: #606060;
+}
+
+.mainLeft ul.hide {
+	display: none;
+	background: #606060;
+}
+
+.mainLeft li {
+	height: 29px;
+	line-height: 29px;
+	text-align: center;
+}
+
+.mainLeft li a {
+	color: #ffffff
+}
+
+.mainLeft li.focus {
+	background: url(../../images/manager/NavHover.jpg) no-repeat;
+	height: 29px;
+	line-height: 29px;
+}
+
+.mainLeft li.focus a {
+	color: #343434;
+}
+
+.mainLeft li:hover {
+	height: 29px;
+	line-height: 29px;
+}
+
+/*鼠标划过效果
+.mainLeft li a:hover {
+	color: #e0e0e0;
+}*/
+
+/*右侧上部 退出*/
+.userOperate {
+	height: 20px;
+	padding-top: 14px;
+	border-bottom: 1px solid #cfcfcf;
+	text-align: right;
+	line-height: 20px;
+}
+
+.userOperate a {
+	background: url(../../images/manager/Pswd.gif) no-repeat;
+	padding-left: 18px;
+	display: inline-block;
+	margin-right: 16px;
+	color: #616161
+}
+
+.userOperate a.quit {
+	background: url(../../images/manager/Quit.gif) no-repeat;
+	padding-left: 21px;
+	margin: 0;
+}
+
+/*右侧内容*/
+.conRight {
+	padding: 0px 0 0px 0;
+}
+
+.areaInfo {
+	line-height: 22px
+}
+
+/*弹出框信息提示*/
+.inputItem {
+	margin-bottom: 10px;
+	width: 480px;
+	line-height: 22px;
+}
+
+.inputItem,.inputItem em,.inputItem label,.inputItem input,.inputItem textarea,.inputItem select,.inputItem strong
+	{
+	float: left
+}
+
+.inputItem em,.inputItem input,.inputItem textarea select,.inputItem select,.allSelect input, .popLeft li input, .popRight li input, .grayContent li input, .noborder,.popRight02 li input{
+	margin-right: 5px
+}
+
+.inputItem strong {
+	height: 16px;
+	width: 210px;
+	font-size: 12px;
+	color: #747474;
+	font-weight: normal;
+	padding-left: 18px;
+}
+
+.strong_red {
+	background: url("../../images/manager/zz_reg_failure_tip.png") no-repeat scroll 0 0;
+	text-align: left;
+}
+
+.strong_blue {
+	background: url("../../images/manager/zz_reg_input_tip.png") no-repeat scroll 0 0;
+	text-align: left;
+}
+
+.strong_successTip {
+	background: url(../../images/manager/zz_reg_success_tip.png) no-repeat scroll 0 0;
+	text-align: left;
+}
+
+.strong_failureTip {
+	background: url(../../images/manager/zz_reg_failure_tip.png) no-repeat scroll 0 0;
+}
+
+.inputItem strong.successTip {
+	background: url(../../images/manager/zz_reg_success_tip.png) no-repeat scroll 0 0;
+}
+
+.inputItem strong.failureTip {
+	background: url(../../images/manager/zz_reg_failure_tip.png) no-repeat scroll 0 0;
+}
+
+/*哥伦布后台input等一些效果样式2011-12-20*/
+
+.tip {
+	color: #333333;
+	cursor: default;
+	margin: 0;
+	position: relative;
+	text-decoration: none;
+}
+
+.tip .popbox td {
+	text-align: left;
+}
+
+.tip .popbox {
+	color: #000000;
+	cursor: default;
+	display: none;
+	font-size: 12px;
+	left: 0;
+	position: absolute;
+	top: 15px;
+	z-index: 9999;
+}
+	
+.tip_other {
+	cursor: default;
+    z-index:10\9;
+	color:#c00;
+	text-decoration:none;
+}
+
+.popbox table td {
+	border: 0 none;
+	font-size: 12px;
+	height: 6px;
+}
+
+table.table td {
+	border-bottom: 1px solid #C9CACB;
+}
+
+.out_c {
+	background: none repeat scroll 0 0 #FEFAE1;
+	line-height: 18px;
+	padding: 5px;
+}
+
+.out_t {
+	background: url("../../images/manager/out_t_c.png") repeat-x scroll 0 0
+		transparent;
+}
+
+.out_right {
+	background: url("../../images/manager/out_c_r.png") repeat-y scroll 0 0
+		transparent;
+}
+
+.out_left {
+	background: url("../../images/manager/out_c_l.png") repeat-y scroll 0 0
+		transparent;
+}
+
+.out_b {
+	background: url("../../images/manager/out_b_c.png") repeat-x scroll 0 0
+		transparent;
+}
+
+input.borderRed {
+	background-color: #FFF8E5;
+	border: 1px solid #FF9292;
+}
+
+input.borderBlue {
+	border: 1px solid #86C8FF;
+}
+select.borderBlue {
+	border: 1px solid #86C8FF;
+}
+
+div.inputItem strong.successTip {
+	background: url("../../images/manager/zz_reg_success_tip.png") no-repeat scroll left center transparent;
+}
+
+.hRed {
+	color: #811F20;
+}
+
+/* 等待遮罩效果 2011-12-26 by 夏成城 */
+.loaddata_mask {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/manager/loading.gif) no-repeat center;
+	background-color: #FFFFFF;
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	filter: alpha(opacity =     50);
+	-khtml-opacity: 0.50;
+	-moz-opacity: 0.50;
+	opacity: 0.50;
+}
+
+/*提示小图标*/
+  .msgred {
+	background: url("../../images/manager/zz_reg_failure_tip.png") no-repeat scroll 0 0 transparent;
+    line-height: 22px;
+    padding-left: 18px;
+    color: red;
+}
+
+.msggreen {
+	background: url("../../images/manager/zz_reg_success_tip.png") no-repeat scroll 0 0 transparent;
+    padding-left: 18px;
+    line-height: 22px;
+}
+
+.msgblue {
+	background: url("../../images/manager/zz_reg_input_tip.png") no-repeat scroll 0 0 transparent;
+    line-height: 22px;
+    padding-left: 18px;
+    color:#454545;
+}
+/*物料编码边框样式*/
+.labelBorder{
+	margin-right: 5px;
+	padding-top:2px;
+	border:1px solid #efefef;
+	height: 20px;
+}
+.msgredborder{
+	border : 1px solid #FF0000;
+}
+.msgblueborder{
+	border: 1px solid #86C8FF;
+}
+
+/*保存样式共通 有保存样式时下面的t20px应去掉参考zz0507*/
+.saveinfo{
+	font-size:14px;
+	color:#33CC33;
+	margin:0  auto 6px;
+	width:200px;
+	height:14px;
+}
+
+.select_4word{
+	border:1px solid #d2d2d2;
+	width:90px;
+	height:22px;
+	line-height:22px;
+	padding-top:1px;
+	height:22px\9;
+}
+/* 数据加载时样式 */
+.default_container {
+	position: relative;
+}
+.default_mask {
+	width: 100%;
+	height: 100%;
+	background: url(../../images/manager/loading.gif) no-repeat center;
+	background-color: #FFFFFF;
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	filter: alpha(opacity =70);
+	-moz-opacity: 0.70;
+	opacity: .70;
+}
+/** 前台TEXTAREA 样式*/
+.remark_textarea {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #A3C5F8;
+    font-size: 12px;
+    height: 20px;
+    line-height: 18px;
+    padding-left: 3px;
+    width: 300px;
+}
+.remark_click {
+    border: 1px solid #F0B278;
+}
+
+/*  check图标*/
+.zzCheck {
+	background: url(../../images/manager/zzCheck.png) no-repeat;
+	height:17px;
+	width:17px;
+	display:inline-block;
+}
+.zzUncheck {
+	background: url(../../images/manager/zzUncheck.png) no-repeat;
+	height:17px;
+	width:17px;
+	display:inline-block;
+}
+/*20120703展开收起小图标*/
+.upward,.downward{
+	background:url(../../images/manager/upward.jpg) no-repeat right;
+	padding-right:18px;
+}
+.downward{
+	background:url(../../images/manager/downward.jpg) no-repeat right;
+}
+
+/** 编辑删除图标 */
+.edit,.delete,.addNew{
+	background:url(../../images/manager/edit.png) no-repeat;
+	width:16px;
+	height:20px;
+	display:inline-block;
+	margin:0px;	
+}
+.edit:hover{
+	background:url(../../images/manager/editH.png) no-repeat;
+}
+.delete{
+	background:url(../../images/manager/storingDel.png) no-repeat;
+}
+.delete:hover{
+	background:url(../../images/manager/storingDelH.png) no-repeat;
+}
+
+/*修改密码(钥匙),设置（齿轮）图标*/
+.modify,.install{
+	background:url(../../images/manager/key.png) no-repeat;
+	width:18px;
+	height:20px;
+	display:inline-block;
+	margin:0 4px;
+	
+}
+.modify:hover{
+	background:url(../../images/manager/keyH.png) no-repeat;
+}
+.install{
+	background:url(../../images/manager/install.png) no-repeat;
+	width:20px;
+}
+.install:hover{
+	background:url(../../images/manager/installH.png) no-repeat;
+}
+/*上移*/
+.upMove,.downMove,.download{
+	background:url(../../images/manager/upMove.png) no-repeat;
+	width:13px;
+	display:inline-block;
+}
+.upMove:hover{
+    background:url(../../images/manager/upMoveH.png) no-repeat;
+}
+/*下移*/
+.downMove{
+	background:url(../../images/manager/downMove.png) no-repeat;
+}
+.downMove:hover{
+    background:url(../../images/manager/downMoveH.png) no-repeat;
+}
+/*下载*/
+.download{
+	background:url(../../images/manager/download.png) no-repeat;
+}
+.download:hover{
+	background:url(../../images/manager/downloadH.png) no-repeat;
+}
+/*tr行背景色*/
+tr.bgColor1{
+    background: #edf9fe;
+}

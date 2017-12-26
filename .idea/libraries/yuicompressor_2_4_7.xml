@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="yuicompressor-2.4.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/WebRoot/resources/resource/assets/jslider/tools/yuicompressor-2.4.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

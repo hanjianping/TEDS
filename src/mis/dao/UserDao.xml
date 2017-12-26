@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mis.dao.UserDao" >
+         <resultMap id="UserList"  type="mis.entity.User">
+			<id column="ID" property="id" />
+			<result column="ID" property="id" />
+			<result column="PWD" property="password" />
+			<result column="RealName" property="realName" />
+			<result column="Depart" property="depart" />
+			<result column="Posi" property="posi"/>
+		</resultMap>
+		 <select id="existUserByUserID" resultMap="UserList">
+   		 	select * from user_table where 1=1
+   		 	<if test="id != null and id !='' ">
+				and ID=#{id} 
+			</if>
+   		 </select>
+		
+   		 <select id="existUser" resultMap="UserList">
+   		 	select * from user_table where 1=1
+   		 	<if test="id != null and id !='' ">
+				and ID=#{id} 
+			</if>
+			<if test="password != null and password !='' ">
+				and PWD=#{password} 
+			</if>
+   		 </select>
+   		 <select id="findUserList" resultMap="UserList">
+   		  select * from user_table where 1=1
+   		  <if test="id != null and id !='' ">
+				and ID=#{id} 
+			</if>
+			<if test="realName != null and realName !='' ">
+				and RealName=#{realName} 
+			</if>
+			<if test="depart != null and depart !='' ">
+				and Depart=#{depart} 
+			</if>
+   		  limit #{pageNum},#{pageSize}
+   		 </select>
+   		 
+   		 <select id="findUserListCount" resultType="int">
+         	select count(*) from user_table  where 1=1
+         	<if test="id != null and id !='' ">
+				and ID=#{id} 
+			</if>
+			<if test="realName != null and realName !='' ">
+				and RealName=#{realName} 
+			</if>
+			<if test="depart != null and depart !='' ">
+				and Depart=#{depart} 
+			</if>
+         </select>
+         
+         <select id="showselectDepart" resultMap="UserList">
+         	select  * from user_table  GROUP BY Depart; 
+         </select>   		
+         
+         <update id="modifyUser" parameterType="mis.entity.User"> 
+    			update user_table 
+    			set Depart=#{depart},
+    			<if test=" realName != null and realName !='' ">
+				  RealName=#{realName}, 
+				</if>
+ 				<if test=" posi != null and posi !='' ">
+					Posi=#{posi}
+				</if>
+    			  where ID=#{id}
+   		 </update>
+   		 
+   		 <delete id="delete">
+   		 	delete from user_table where
+   		 	<if test="id != null and id !='' ">
+					ID=#{id}
+				</if>
+   		 </delete>
+   		 
+   		    <update id="modifyPWD"> 
+    			update user_table 
+    		  set PWD=#{newPWD}
+    			  where ID=#{id}
+   		  </update>
+   		   <insert id="addUser" parameterType="mis.entity.User">
+    			insert into user_table
+    			(ID,PWD,RealName,Depart,Posi) 
+    		  values (#{id},#{password},#{realName},#{depart},#{posi})
+   		  </insert>
+   		 
+   		 
+ </mapper>
+

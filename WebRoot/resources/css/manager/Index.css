@@ -1,0 +1,194 @@
+
+.areaInfo .addBtn {
+	margin-left: 418px;
+	display: inline
+}
+
+.grayBg {
+	background: #e0e0e0;
+	height: 26px;
+	line-height: 26px;
+	padding-left: 12px;
+	width: 468px;
+}
+
+.grayBg a {
+	padding-right: 15px;
+}
+.ondown_right {
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+.grayContent {
+	background: #f6f6f6;
+	margin-top: 1px;
+	padding: 5px 0 0 12px;
+	float: left;
+	width: 468px
+}
+
+.grayContent li {
+	width: 150px;
+	float: left;
+	margin-bottom: 8px; *
+	margin-bottom: 4px
+}
+
+.grayContent li label {
+	margin-left: 5px
+}
+
+.promptInfo {
+	color: #A7A7A7;
+	display: inline;
+	float: left;
+	font-size: 12px;
+	line-height: 12px;
+	margin-left: 20px;
+	padding-top: 5px;
+	width: 450px;
+}
+
+div.containerLeft {
+	float: left;
+	height: 315px;
+	width: 210px;
+}
+
+.borderAll {
+	border: 1px solid #D6D6D6;
+}
+
+div.containerRight {
+	float: right;
+	height: 315px;
+	padding: 0 20px;
+	width: 500px;
+	background: #e6e6e6;
+}
+
+.MRwarp {
+	background: #efefef;
+	border: 1px solid #c1c1c1;
+	padding: 0 35px 20px 35px;
+	width: 698px;
+	margin-bottom: 20px;
+}
+
+.MRwarp h2 {
+	color: #747474;
+	font-size: 14px;
+	display: block;
+}
+
+.inputcontain {
+	margin-top: 16px;
+	margin-bottom: 6px;
+	clear: both;
+}
+
+.Item190 {
+	margin-left: 60px;
+	width: 600px;
+	display: inline;
+}
+
+div.ad_str strong {
+	width: 300px;
+}
+
+.Item191 {
+	margin-left: 36px;
+	width: 600px;
+	display: inline;
+}
+
+.Item192 {
+	margin-left: 48px;
+	width: 600px;
+	display: inline;
+}
+
+.Item193 {
+	margin-left: 24px;
+	width: 600px;
+	display: inline;
+}
+
+.w16px {
+	margin-left: 16px;
+}
+
+.prompt {
+	margin-left: 74px;
+	padding-top: 5px;
+	width: 480px;
+	font-size: 12px;
+	color: #a7a7a7;
+	line-height: 12px;
+	float: left;
+}
+
+.prompt_xiaoguo {
+	margin-left: 74px;
+	padding-top: 5px;
+	width: 480px;
+	font-size: 12px;
+	color: #807F7F;
+	line-height: 12px;
+	float: left;
+	display: inline;
+}
+
+.prompt_o {
+	margin-left: 109px;
+}
+
+.M74px {
+	margin-left: 74px;
+}
+
+.w190px {
+	width: 187px;
+	padding-left: 3px;
+}
+
+.w250px {
+	width: 247px;
+	padding-left: 3px;
+}
+
+.lightgray {
+	color: #807f7f;
+}
+
+.redfont {
+	color: #ff0000;
+}
+
+.mar_left4 {
+	margin-left: 4px;
+	display: inline;
+}
+
+.showCertificate {
+	margin: 10px 0;
+}
+
+ol,ul {
+	list-style: none outside none;
+}
+
+.showCertificate li {
+	background: none repeat scroll 0 0 #E9E9E9;
+	border: 1px solid #D6D6D6;
+	display: inline;
+	float: left;
+	margin: 0 20px;
+	padding: 3px 3px 0;
+	/* position: relative;*/
+	width: 102px;
+}
+
+
