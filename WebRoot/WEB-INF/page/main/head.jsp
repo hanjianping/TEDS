@@ -11,8 +11,8 @@
             </a>
             <div id="top_menu" class="nav notify-row">
             	<ul id="myTab" class="nav  nav-pills" style="margin-top:1px;">
-				    <li style="font-size:22px;" id="shou"><a href="History_all.action" >受电弓</a></li>
-				    <li style="font-size:22px;"  id="zou" ><a href="Zou_newData.action">走行部</a></li>
+				    <li style="font-size:22px;" id="shou"><a href="History_all.action" style="color:darkgreen;" >受电弓</a></li>
+				    <li style="font-size:22px;" id="zou" ><a href="Zou_newData.action" style="color:darkgreen;">走行部</a></li>
                     <!--<li style="font-size:22px;" id="zha" ><a href="Zha_newData.action">闸 瓦</a></li> -->
 				</ul>
 

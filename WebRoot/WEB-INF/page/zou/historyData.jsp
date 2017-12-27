@@ -203,7 +203,6 @@
                         <a href="javascript:searchZha()"><button  style="width:auto;margin-top:1%;"  class="btn btn-primary" title="Search">搜索数据 &nbsp;<i class="icon  icon-search"></i></button></a>
                     </td>
                 </tr>
-
                 </tbody>
             </table>
             <label  style="vertical-align:top; margin-left:1%;display:inline-block;color:#1b6d85">列车编号:ZE503605</label>
@@ -230,7 +229,7 @@
                 <button type="button" style="width:100px;height:80px;color:white;background-color: #265a88;" class="btn btn-info">过车序号</button>
             </div>
             <div style="margin-left: 11%; margin-top: -7%;">
-                <button type="button" onclick="showpiture1('button1','1')" id="button1" style="width:100px;margin-left:5px;background-color: orange;" class="btn btn-info">01</button>
+                <button type="button" onclick="showpiture1('button1','1')" id="button1" style="width:100px;margin-left:5px;background-color: orange;" class="btn btn-info">01 <span class="mui-badge mui-badge-primary" style="background-color:red;">2</span></button>
                 <button type="button" onclick="showpiture1('button2','2')" id="button2" style="width:100px;background-color: #445566;" class="btn btn-info">02</button>
                 <button type="button"  onclick="showpiture1('button3','3')" id="button3" style="width:100px;background-color: #445566;" class="btn btn-info">03</button>
                 <button type="button"  onclick="showpiture1('button4','4')" id="button4" style="width:100px;background-color: #445566;" class="btn btn-info">04</button>
