@@ -206,12 +206,12 @@
 
                 </tbody>
             </table>
-            <label  style="vertical-align:top; margin-left:1%;display:inline-block;">列车编号:ZE503605</label>
-            <label  style="vertical-align:top; margin-left:1%;display:inline-block;">检测时间:2017-12-25 13:23:23</label>
-            <label  style="vertical-align:top; margin-left:1%;display:inline-block;">车厢总数:8</label>
-            <label  style="vertical-align:top; margin-left:1%;display:inline-block;">平均速度:35 km/h</label>
+            <label  style="vertical-align:top; margin-left:1%;display:inline-block;color:#1b6d85">列车编号:ZE503605</label>
+            <label  style="vertical-align:top;margin-left:8%;display:inline-block;color:#1b6d85">检测时间:2017-12-25 13:23:23</label>
+            <label  style="vertical-align:top; margin-left:8%;display:inline-block;color:#1b6d85">车厢总数:8</label>
+            <label  style="vertical-align:top;margin-left:8%;display:inline-block;color:#1b6d85">平均速度:35 km/h</label>
             <div  class="shou"><div class="test" id="picture_show"></div></div>
-            <div style="margin-left:2%;margin-top:1%;">
+            <div style="margin-left:2%;">
                 <input type="hidden" id="tmp_button" value="btn1">
                 <input type="hidden" id="tmp_button1" value="button1">
                 <input type="hidden" id="tmp_no" value="1">
