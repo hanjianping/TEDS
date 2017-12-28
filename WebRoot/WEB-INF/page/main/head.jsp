@@ -3,7 +3,7 @@
 <div id="header" class="navbar navbar-inverse navbar-fixed-top">
     <!-- BEGIN TOP NAVIGATION BAR -->
     <div class="navbar-inner">
-        <div class="container-fluid" id="printhead" style="background-image: url(images/logo11.jpg);background-repeat:no-repeat;background-position: 215px;-1px;">
+        <div class="container-fluid" id="printhead" style="background-image: url(images/logo6.jpg);background-repeat:no-repeat;background-position: 216px 0px;">
             <!-- BEGIN LOGO -->
             <a class="brand" href="" style="background-image:url(images/user.jpg );background-repeat:no-repeat;background-color:#32c2cd;">
                <!--   <img src="img/logo.png" alt="Admin Lab" />-->
