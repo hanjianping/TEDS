@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="resources/resource/assets/bootstrap-timepicker/compiled/timepicker.css" />
     <link rel="stylesheet" type="text/css" href="resources/resource/assets/bootstrap-daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="resources/resource/css/page.css"  />
+
     <style type="text/css">
         .shou{
             width: 100%;
@@ -61,6 +62,17 @@
       $("#picture_show").css("background-image","url(images/0321/"+id2+"/"+id+".jpg)")
       $("#tmp_no1").val(id);
   }
+  function errorLocation(){
+      $('#guzhangdian').modal();
+      event.stopPropagation();
+  }
+
+  function clearError(){
+      color=$("#button1").css('background-color');
+      $("#button1h").css("background-color","transparent");
+      $("#button1h").text("");
+  }
+
 </script>
 
 </head>
@@ -195,17 +207,20 @@
             <div style="margin-top:2%;margin-left:2%;">
                 <button type="button" style="width:100px;height:80px;color:white;background-color: #265a88;" class="btn btn-info">过车序号</button>
             </div>
-            <div style="margin-left: 11%; margin-top: -7%;">
-                <button type="button" onclick="showpiture1('button1','1')" id="button1" style="width:100px;margin-left:5px;background-color: orange;" class="btn btn-info">01</button>
-                <button type="button" onclick="showpiture1('button2','2')" id="button2" style="width:100px;background-color: #445566;" class="btn btn-info">02</button>
-                <button type="button"  onclick="showpiture1('button3','3')" id="button3" style="width:100px;background-color: #445566;" class="btn btn-info">03</button>
-                <button type="button"  onclick="showpiture1('button4','4')" id="button4" style="width:100px;background-color: #445566;" class="btn btn-info">04</button>
-                <button type="button"  onclick="showpiture1('button5','5')" id="button5" style="width:100px;background-color: #445566;" class="btn btn-info">05</button>
-                <button type="button" id="button6"  onclick="showpiture1('button6','6')" style="width:100px;background-color: #445566;" class="btn btn-info">06</button>
-                <button type="button"   onclick="showpiture1('button7','7')" id="button7" style="width:100px;background-color: #445566;" class="btn btn-info">07</button>
-                <button type="button"  onclick="showpiture1('button8','8')" id="button8" style="width:100px;background-color: #445566;" class="btn btn-info">08</button>
+            <div style="margin-left: 10.5%; margin-top: -7%;">
+                <button type="button" onclick="showpiture1('button1','1')" id="button1" style="width:100px;margin-left:5px;background-color: orange;" class="btn btn-info">
+                    01车厢
+                    <span onclick="errorLocation()" id="button1h" style="height:20px;width:20px;margin-top:-20px;margin-left:10px;cursor:pointer;margin-right:-25px;background-color:#F00; border-radius:25px; display:inline-table; color:#FFF; ">1</span>
+                </button>
+                <button type="button" onclick="showpiture1('button2','2')" id="button2" style="width:100px;background-color: #445566;" class="btn btn-info">02号车厢</button>
+                <button type="button"  onclick="showpiture1('button3','3')" id="button3" style="width:100px;background-color: #445566;" class="btn btn-info">03号车厢</button>
+                <button type="button"  onclick="showpiture1('button4','4')" id="button4" style="width:100px;background-color: #445566;" class="btn btn-info">04号车厢</button>
+                <button type="button"  onclick="showpiture1('button5','5')" id="button5" style="width:100px;background-color: #445566;" class="btn btn-info">05号车厢</button>
+                <button type="button" id="button6"  onclick="showpiture1('button6','6')" style="width:100px;background-color: #445566;" class="btn btn-info">06号车厢</button>
+                <button type="button"   onclick="showpiture1('button7','7')" id="button7" style="width:100px;background-color: #445566;" class="btn btn-info">07号车厢</button>
+                <button type="button"  onclick="showpiture1('button8','8')" id="button8" style="width:100px;background-color: #445566;" class="btn btn-info">08号车厢</button>
             </div>
-            <div style="margin-left: 11%; margin-top: 1%;">
+            <div style="margin-left: 10.5%; margin-top: 1%;">
                 <button type="button" id="button9" onclick="showpiture1('button9','1')"  style="width:100px;margin-left:5px;background-color: #445566;" class="btn btn-info">09</button>
                 <button type="button" id="button10" onclick="showpiture1('button10','2')" style="width:100px;background-color: #445566;" class="btn btn-info">10</button>
                 <button type="button" id="button11" onclick="showpiture1('button11','3')" style="width:100px;background-color: #445566;" class="btn btn-info">11</button>
@@ -215,11 +230,30 @@
                 <button type="button" id="button15" onclick="showpiture1('button15','7')" style="width:100px;background-color: #445566;" class="btn btn-info">15</button>
                 <button type="button" id="button16" onclick="showpiture1('button16','8')" style="width:100px;background-color: #445566;" class="btn btn-info">16</button>
             </div>
+
+
         </div>
     </div>
 </div>
 </div>
 
+<%-- 修改密码 --%>
+<div id="guzhangdian" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true" onclick="return resetValue()">×</button>
+        <h3 style="font-family:Arial;font-weight: bold;font-size:16px;"  id="myModalLabel9">故障</h3>
+    </div>
+    <div class="modal-body">
+        <div style="font-family:Arial;font-size:14px;font-weight: bold;" class="modal-body">发现故障点,坐标在(626,818)</div>
+    </div>
+    <div class="modal-footer">
+        <font id="Modifyerror" style="color: red;"></font>
+        <button style="font-family:Arial;font-weight: bold;" type="submit" class="btn btn-success" data-dismiss="modal" aria-hidden="true"
+                onclick="clearError()" >已经阅读</button>
+        <button style="font-family:Arial;font-weight: bold;" class="btn btn-primary" onclick="return resetValue()">关闭本页面</button>
+    </div>
+</div>
 
 <%@include file="../main/footer.jsp"%>
 <script src="resources/resource/js/jquery-1.8.3.min.js"></script>
