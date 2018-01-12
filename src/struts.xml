@@ -58,12 +58,12 @@
         </action>
 		<action name="Zou_*" class="mis.action.ZouAction" method="{1}">
 			<result name="newData" >WEB-INF/page/zou/newData.jsp</result>
+            <result name="troubleData" >WEB-INF/page/zha/troubleData.jsp</result>
 			<result name="historyData">WEB-INF/page/zou/historyData.jsp</result>
 			<result name="trainAnaylse">WEB-INF/page/zou/trainAnalyse.jsp</result>
 		</action>
         <action name="Zha_*" class="mis.action.ZhaAction" method="{1}">
             <result name="newData" >WEB-INF/page/zha/newData.jsp</result>
-            <result name="troubleData" >WEB-INF/page/zha/troubleData.jsp</result>
             <result name="historyData" >WEB-INF/page/zha/historyData.jsp</result>
             <result name="analyseTime" >WEB-INF/page/zha/analyseTime.jsp</result>
             <result name="analyseMiles" >WEB-INF/page/zha/analyseMiles.jsp</result>

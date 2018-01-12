@@ -28,7 +28,7 @@
         .test {
             width: 10000px;
             height: 682px;
-            background-image:url(images/test.jpg);
+            background-image:url(images/link/1/1.jpg);
             background-repeat: no-repeat;
             background-size: auto 100%;
         }
@@ -44,7 +44,7 @@
       }else{
           id2=1;
       }
-      $("#picture_show").css("background-image","url(images/0321/"+id+"/"+id2+".jpg)")
+      $("#picture_show").css("background-image","url(images/link/"+id+"/"+id2+".jpg)")
       $("#tmp_button").val(no);
       $("#tmp_no").val(id);
   }
@@ -53,13 +53,13 @@
       $("#"+btno).css("background-color"," #445566")
       $("#"+no).css("background-color","orange");
       $("#tmp_button1").val(no);
-      id2= id2=$("#tmp_no").val();
+      id2=$("#tmp_no").val();
       if (id2>=1) {
           id2 = id2;
       }else{
           id2=1;
       }
-      $("#picture_show").css("background-image","url(images/0321/"+id2+"/"+id+".jpg)")
+      $("#picture_show").css("background-image","url(images/link/"+id2+"/"+id+".jpg)")
       $("#tmp_no1").val(id);
   }
   function errorLocation(){
@@ -200,7 +200,7 @@
             <label  style="vertical-align:top;margin-left:8%;display:inline-block;color:#1b6d85">检测时间:2017-12-25 13:23:23</label>
             <label  style="vertical-align:top; margin-left:8%;display:inline-block;color:#1b6d85">车厢总数:8</label>
             <label  style="vertical-align:top;margin-left:8%;display:inline-block;color:#1b6d85">平均速度:35 km/h</label>
-           <div  class="shou"  style="margin-left:1%;"><div class="test" id="picture_show"></div></div>
+           <div  class="shou"  style="margin-left:1%;"><div class="test" id="picture_show" ></div></div>
             <div style="margin-left:2%;margin-top:1%;">
                 <input type="hidden" id="tmp_button" value="btn1">
                 <input type="hidden" id="tmp_button1" value="button1">

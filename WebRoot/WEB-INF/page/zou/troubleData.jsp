@@ -28,7 +28,7 @@
         .test {
             width: 10000px;
             height: 682px;
-            background-image:url(images/test.jpg);
+            background-image:url(images/trouble/1/1.jpg);
             background-repeat: no-repeat;
             background-size: auto 100%;
         }
@@ -44,7 +44,7 @@
       }else{
           id2=1;
       }
-      $("#picture_show").css("background-image","url(images/0321/"+id+"/"+id2+".jpg)")
+      $("#picture_show").css("background-image","url(images/trouble/"+id+"/"+id2+".jpg)")
       $("#tmp_button").val(no);
       $("#tmp_no").val(id);
   }
@@ -59,7 +59,7 @@
       }else{
           id2=1;
       }
-      $("#picture_show").css("background-image","url(images/0321/"+id2+"/"+id+".jpg)")
+      $("#picture_show").css("background-image","url(images/trouble/"+id2+"/"+id+".jpg)")
       $("#tmp_no1").val(id);
   }
   function errorLocation(){
