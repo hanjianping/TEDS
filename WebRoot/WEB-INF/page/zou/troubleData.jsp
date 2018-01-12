@@ -106,7 +106,7 @@
                 </a>
                 <ul class="sub">
                     <li id="zx1"><a class="" href="Zou_newData.action" >图片展示</a></li>
-                    <li id="zx2"><a class="" href="Zou_troubleData.action" >故障识别</a></li>
+                    <li id="zx2"><a class="Zou_troubleData.action" href="" >故障识别</a></li>
 					<li id="zx3"><a class="" href="Zha_newData.action" >闸瓦数据</a></li>
                 </ul>
             </li>
@@ -232,7 +232,7 @@
                 <button type="button"   onclick="showpiture1('button7','7')" id="button7" style="width:100px;background-color: #445566;" class="btn btn-info">07号车厢</button>
                 <button type="button"  onclick="showpiture1('button8','8')" id="button8" style="width:100px;background-color: #445566;" class="btn btn-info">08号车厢</button>
             </div>
-            <div style="margin-left: 11%; margin-top: 1%;">
+            <div style="margin-left: 10.5%; margin-top: 1%;">
                 <button type="button" id="button9" onclick="showpiture1('button9','1')"  style="width:100px;margin-left:5px;background-color: #445566;" class="btn btn-info">09</button>
                 <button type="button" id="button10" onclick="showpiture1('button10','2')" style="width:100px;background-color: #445566;" class="btn btn-info">10</button>
                 <button type="button" id="button11" onclick="showpiture1('button11','3')" style="width:100px;background-color: #445566;" class="btn btn-info">11</button>

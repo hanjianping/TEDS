@@ -20,6 +20,10 @@ public class ZouAction extends ActionSupport implements ServletRequestAware {
 
         return "newData";
     }
+    public String troubleData(){
+
+        return "troubleData";
+    }
     public String historyData(){
         return "historyData";
     }
