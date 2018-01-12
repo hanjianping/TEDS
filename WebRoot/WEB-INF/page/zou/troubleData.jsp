@@ -106,7 +106,7 @@
                 </a>
                 <ul class="sub">
                     <li id="zx1"><a class="" href="Zou_newData.action" >图片展示</a></li>
-                    <li id="zx2"><a class="" href="Zou_troubleData.action" >故障识别</a></li>
+                    <li id="zx2"><a class="Zou_troubleData.action" href="" >故障识别</a></li>
 					<li id="zx3"><a class="" href="Zha_newData.action" >闸瓦数据</a></li>
                 </ul>
             </li>
