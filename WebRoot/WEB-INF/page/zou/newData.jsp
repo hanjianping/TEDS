@@ -207,7 +207,7 @@
             <div style="margin-top:2%;margin-left:2%;">
                 <button type="button" style="width:100px;height:80px;color:white;background-color: #265a88;" class="btn btn-info">过车序号</button>
             </div>
-            <div style="margin-left: 10.5%; margin-top: -7%;">
+            <div style="margin-left: 11%; margin-top: -7%;">
                 <button type="button" onclick="showpiture1('button1','1')" id="button1" style="width:100px;margin-left:5px;background-color: orange;" class="btn btn-info">
                     01车厢
                     <span onclick="errorLocation()" id="button1h" style="height:20px;width:20px;margin-top:-20px;margin-left:10px;cursor:pointer;margin-right:-25px;background-color:#F00; border-radius:25px; display:inline-table; color:#FFF; ">1</span>
